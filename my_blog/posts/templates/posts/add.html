@@ -1,0 +1,17 @@
+{% extends 'posts/home.html' %}
+{% load static %}
+{% block title %}Create Post{% endblock %}
+
+{% block body %}
+<div class="add">
+    <h1>Add New Post......</h1> 
+</div>
+    <div class="my-container add-new">
+        <form action="/add/" method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_ul}}
+            <button type="submit" name="save" class="my-btn">Create post</button>
+        </form>    
+    </div>
+   
+{% endblock %}
