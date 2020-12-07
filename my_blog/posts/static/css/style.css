@@ -91,7 +91,7 @@
     margin: 0;
     display: grid;
     place-items: center;
-    background-image: url('/static/images/2.jpg');
+    background-image: url('/static/images/interests.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;
