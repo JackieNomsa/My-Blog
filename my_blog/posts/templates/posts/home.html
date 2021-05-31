@@ -18,7 +18,7 @@
         
     {% block body %}
         <div class="welcome">
-            <h1>Welcome to my blog</h1> 
+            <h1>Tech with Jackie</h1> 
         </div>
         <div class="my-container home">
             {% for i in data_%}
@@ -26,19 +26,20 @@
                 <div class="blog-info">
                     <div>
                         <p>{{ i.post }}</p>
-                        <p class="small-txt"><a href="/about" class="writer">Written-by: {{ i.author }}</a></p>
-                        <p class="small-txt date">Date-posted:{{ i.date_posted }}</p>
-                        {% if i.date_posted != i.date_updated %}
-                            <p class="small-txt date">last-update:{{ i.date_updated }}</p>
-                        {% endif %}
-                        <a href="#" class="my-links link-1"><abbr title="EDIT"><i class="fa fa-edit fa-2x"></i></abbr></a>
-                        <a href="#" class="my-links link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
-                        <a href="#" class="my-links link-2"><abbr title="DELETE"><i class="fa fa-trash-o fa-2x"></i></abbr></a>
+                        
                     </div>
                     
                     {% if i.my_image %}
                     <img src="{{ i.my_image.url }}" alt="image-{{ i.title }}" width="400" max-height='500'>
                     {% endif %}
+                    <p class="small-txt"><a href="/about" class="writer">Written-by: {{ i.author }}</a></p>
+                        <p class="small-txt date">Date-posted: {{ i.date_posted }}</p>
+                        {% if i.date_posted != i.date_updated %}
+                            <p class="small-txt date">last-update: {{ i.date_updated }}</p>
+                        {% endif %}
+                        <div class='my-links'><a href="#" class="link-1"><abbr title="EDIT"><i class="fa fa-edit fa-2x"></i></abbr></a>
+                        <a href="#" class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
+                        <a href="#" class=" link-2"><abbr title="DELETE"><i class="fa fa-trash-o fa-2x"></i></abbr></a>
                 </div>
                 
                 

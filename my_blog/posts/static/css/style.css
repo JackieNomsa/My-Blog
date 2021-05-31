@@ -175,8 +175,8 @@ button:hover {
   .my-nav {
     position: fixed;
     margin-top: 0;
-    width: 10%;
-    background-color: rgba(0, 0, 0, 0.8);
+    width: 9%;
+    background-color: transparent;
     text-align: center;
   }
 
@@ -186,7 +186,7 @@ button:hover {
   }
 
   .my-nav li a {
-    color: #fff;
+    color: rgb(199, 23, 155);
   }
 
   .my-nav li a:hover {
@@ -203,11 +203,12 @@ button:hover {
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 50vh;
+    height: 30vh;
     color: #fff;
   }
 
   .welcome h1 {
+    font-size: 3.5em;
     margin: 0;
     font-family: "Syne Mono", monospace;
   }
@@ -220,12 +221,12 @@ button:hover {
   /* home page */
   .blog-info {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
   }
 
   .small-txt {
     font-size: small;
-    padding: 10px;
+    padding: 0.8em;
   }
 
   .writer {
@@ -237,11 +238,11 @@ button:hover {
   }
 
   .my-links {
-    padding: 15px;
+    padding: 0.9em;
+    font-size: small;
   }
-
-  .link-1 {
-    margin-right: 40px;
+  .my-links a {
+    padding: 1.5em;
   }
 
   .link-2 {
