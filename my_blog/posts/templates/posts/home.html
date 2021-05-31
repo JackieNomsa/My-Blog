@@ -25,17 +25,17 @@
                 <h3>{{ i.title }}</h3>
                 <div class="blog-info">
                     <div>
-                        <p>{{ i.post }}</p>
+                        <p class='blog-text'>{{ i.post }}</p>
                         
                     </div>
                     
                     {% if i.my_image %}
-                    <img src="{{ i.my_image.url }}" alt="image-{{ i.title }}" width="400" max-height='500'>
+                    <img class='image' src="{{ i.my_image.url }}" alt="image-{{ i.title }}" width="400" max-height='500'>
                     {% endif %}
                     <p class="small-txt"><a href="/about" class="writer">Written-by: {{ i.author }}</a></p>
                         <p class="small-txt date">Date-posted: {{ i.date_posted }}</p>
                         {% if i.date_posted != i.date_updated %}
-                            <p class="small-txt date">last-update: {{ i.date_updated }}</p>
+                            <p class="small-txt date">Last-update: {{ i.date_updated }}</p>
                         {% endif %}
                         <div class='my-links'><a href="#" class="link-1"><abbr title="EDIT"><i class="fa fa-edit fa-2x"></i></abbr></a>
                         <a href="#" class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>

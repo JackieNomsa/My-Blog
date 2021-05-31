@@ -1,31 +1,33 @@
-{% extends 'posts/home.html' %}
-{% load static %}
-
-{% block title %}My Interests{% endblock %}
-
-{% block body %}
+{% extends 'posts/home.html' %} {% load static %} {% block title %}My
+Interests{% endblock %} {% block body %}
 <div class="interests">
-    <h1>My Interests......</h1> 
+  <h1>My Interests</h1>
 </div>
 <div class="my-container">
-    {% for i in data_%}
-                <h3>{{ i.title }}</h3>
-                <div class="blog-info">
-                    <div>
-                        <p>{{ i.post }}</p>
-                        <p class="small-txt"><a href="/about" class="writer">Written-by: {{ i.author }}</a></p>
-                        <p class="small-txt date">Date-posted:{{ i.date_posted }}</p>
-                        {% if i.date_posted != i.date_updated %}
-                            <p class="small-txt date">last-update:{{ i.date_updated }}</p>
-                        {% endif %} 
-                    </div>
-                    {% if i.my_image %}
-                    <img src="{{ i.my_image.url }}" alt="image-{{ i.title }}" width="400" max-height='500'>
-                    {% endif %}
-                </div>
-                
-                
-            {% endfor %}
+  {% for i in data_%}
+  <h3>{{ i.title }}</h3>
+  <div class="blog-info">
+    <div>
+      <p>{{ i.post }}</p>
+      <p class="small-txt">
+        <a href="/about" class="writer">Written-by: {{ i.author }}</a>
+      </p>
+      <p class="small-txt date">Date-posted:{{ i.date_posted }}</p>
+      {% if i.date_posted != i.date_updated %}
+      <p class="small-txt date">last-update:{{ i.date_updated }}</p>
+      {% endif %}
+    </div>
+    {% if i.my_image %}
+    <img
+      src="{{ i.my_image.url }}"
+      alt="image-{{ i.title }}"
+      width="400"
+      max-height="500"
+    />
+    {% endif %}
+  </div>
+
+  {% endfor %}
 </div>
 
 {% endblock %}
