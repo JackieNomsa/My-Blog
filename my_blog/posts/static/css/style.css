@@ -181,12 +181,14 @@ button:hover {
 
 .footer {
   width: 100vw;
-  padding: 1em;
+  padding: 1.5em;
   text-align: center;
   background-color: aqua;
   position: fixed;
   bottom: 0;
   font-size: small;
+  color: #fff;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 700px) {
@@ -221,7 +223,8 @@ button:hover {
   }
 
   .welcome h1 {
-  font-size: .5em;}
+    font-size: 0.5em;
+  }
 
   .footer {
     padding: 2em;
