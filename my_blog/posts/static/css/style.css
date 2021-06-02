@@ -194,3 +194,36 @@ button:hover {
     grid-template-columns: 2fr 1fr;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .welcome {
+    height: 50vh;
+  }
+  .my-container {
+    width: 70%;
+  }
+  .blog-info {
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image {
+    width: 24em;
+    height: 20em;
+  }
+
+  .my-nav li a {
+    color: rgb(84, 201, 195);
+  }
+
+  .my-nav li a:hover {
+    color: rgb(197, 22, 130);
+  }
+
+  .welcome h1 {
+  font-size: .5em;}
+
+  .footer {
+    padding: 2em;
+  }
+}

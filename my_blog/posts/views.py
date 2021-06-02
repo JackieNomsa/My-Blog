@@ -9,6 +9,15 @@ def home(request):
     my_posts = Posts.objects.all().order_by('title')
     return render(request, 'posts/home.html', {'data_': my_posts})
 
+
+def about(request):
+    return render(request, 'posts/about.html')
+
+def interests(request):
+    my_interests = Posts.objects.filter(title__contains='coding')
+    return render(request, 'posts/interests.html',{'data_':my_interests})
+
+
 def add_post(request):
     if request.method == 'POST':
         form = CreatePost(request.POST, request.FILES)
@@ -25,9 +34,12 @@ def add_post(request):
         form = CreatePost()
     return render(request,'posts/add.html',{'form':form})
 
-def about(request):
-    return render(request, 'posts/about.html')
 
-def interests(request):
-    my_interests = Posts.objects.filter(title__contains='coding')
-    return render(request, 'posts/interests.html',{'data_':my_interests})
+def post_details(request,pk):
+    '''retrieve update delete post'''
+    try:
+        post = Posts.objects.get(pk=pk)
+    except Posts.DoesNotExist:
+        print('post does not exist')
+
+    
