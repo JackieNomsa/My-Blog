@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Posts
 from .forms import CreatePost
+from .serializer import PostSerializer
 
 # Create your views here.
 
@@ -42,4 +43,12 @@ def post_details(request,pk):
     except Posts.DoesNotExist:
         print('post does not exist')
 
-    
+    if request.method == 'PUT':
+        serializer = PostSerializer(post,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        
+    elif request.method == 'DELETE':
+        post.delete()
+
+    return render('home')
