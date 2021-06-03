@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-import django
 import django_heroku
 import dj_database_url
 from decouple import config
@@ -46,6 +45,9 @@ INSTALLED_APPS = [
     'posts',
     'accounts',
     'rest_framework',
+    'django_heroku',
+    'dj_database_url',
+    'decouple',
 ]
 
 MIDDLEWARE = [
