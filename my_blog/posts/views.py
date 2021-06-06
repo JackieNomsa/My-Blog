@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Posts
 from .forms import CreatePost
@@ -35,20 +35,30 @@ def add_post(request):
         form = CreatePost()
     return render(request,'posts/add.html',{'form':form})
 
+def delete_post(request,id):
+    post_id = id
 
-def post_details(request,pk):
-    '''retrieve update delete post'''
-    try:
-        post = Posts.objects.get(pk=pk)
-    except Posts.DoesNotExist:
-        print('post does not exist')
+    Posts.filter(id=post_id).delete()
+    return redirect('home')
 
-    if request.method == 'PUT':
-        serializer = PostSerializer(post,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
+def comment_post(request,id):
+    return redirect('home')
+
+def edit_post(request,id):
+    return redirect('home')
+# def post_details(request,pk):
+#     '''retrieve update delete post'''
+#     try:
+#         post = Posts.objects.get(pk=pk)
+#     except Posts.DoesNotExist:
+#         print('post does not exist')
+
+#     if request.method == 'PUT':
+#         serializer = PostSerializer(post,data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
         
-    elif request.method == 'DELETE':
-        post.delete()
+#     elif request.method == 'DELETE':
+#         post.delete()
 
-    return render('home')
+#     return render('home')
