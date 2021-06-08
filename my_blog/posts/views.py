@@ -31,6 +31,7 @@ def add_post(request):
 
             my_p = Posts(title=t,post=p,author=a, my_image=m)
             my_p.save()
+            return redirect('/')
     else:
         form = CreatePost()
     return render(request,'posts/add.html',{'form':form})
