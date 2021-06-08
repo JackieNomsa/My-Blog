@@ -1,17 +1,22 @@
-{% extends 'posts/home.html' %}
-{% load static %}
-{% block title %}Create Post{% endblock %}
-
-{% block body %}
+{% extends 'posts/home.html' %} {% load static %} {% block title %}Create Post
+{% endblock %} {% block body %} {% if edition %}
 <div class="add">
-    <h1>Add New Post......</h1> 
+  <h1>Edit Post</h1>
 </div>
-    <div class="my-container add-new">
-        <form action="/add/" method="POST"  enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_ul}}
-            <button type="submit" name="save" class="my-btn">Create post</button>
-        </form>    
-    </div>
-   
-{% endblock %}
+<div class="my-container add-new">
+  <form action="/add/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form.as_ul}}
+    <button type="submit" name="save" class="my-btn">save changes</button>
+  </form>
+</div>
+{% else %}
+<div class="add">
+  <h1>Add New Post......</h1>
+</div>
+<div class="my-container add-new">
+  <form action="/add/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form.as_ul}}
+    <button type="submit" name="save" class="my-btn">Create post</button>
+  </form>
+</div>
+{% endif %} {% endblock %}

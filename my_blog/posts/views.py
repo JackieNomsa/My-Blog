@@ -36,7 +36,7 @@ def add_post(request):
     return render(request,'posts/add.html',{'form':form})
 
 def delete_post(request,id):
-    post_id = int(id)
+    post_id = id
 
     Posts.objects.filter(id=post_id).delete()
     return redirect('home')
@@ -45,20 +45,8 @@ def comment_post(request,id):
     return redirect('home')
 
 def edit_post(request,id):
-    return redirect('home')
-# def post_details(request,pk):
-#     '''retrieve update delete post'''
-#     try:
-#         post = Posts.objects.get(pk=pk)
-#     except Posts.DoesNotExist:
-#         print('post does not exist')
+    post_id = id
+    current_post = Posts.objects.filter(id=post_id)
 
-#     if request.method == 'PUT':
-#         serializer = PostSerializer(post,data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-        
-#     elif request.method == 'DELETE':
-#         post.delete()
 
-#     return render('home')
+    return redirect('/add/',{'edition':current_post})
