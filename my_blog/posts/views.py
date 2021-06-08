@@ -36,9 +36,9 @@ def add_post(request):
     return render(request,'posts/add.html',{'form':form})
 
 def delete_post(request,id):
-    post_id = id
+    post_id = int(id)
 
-    Posts.filter(id=post_id).delete()
+    Posts.objects.filter(id=post_id).delete()
     return redirect('home')
 
 def comment_post(request,id):
