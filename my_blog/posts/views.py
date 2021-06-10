@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Posts
 from .forms import CreatePost
-from .serializer import PostSerializer
+
 
 # Create your views here.
 
@@ -48,6 +48,14 @@ def comment_post(request,id):
 def edit_post(request,id):
     post_id = id
     current_post = Posts.objects.filter(id=post_id)
+    print(current_post)
 
+    initial_data = {
+        'title':'',
+        'post':'',
+        'author':'',
+        'my_image':''
+    }
+    form = CreatePost()
 
     return redirect('/add/',{'edition':current_post})
