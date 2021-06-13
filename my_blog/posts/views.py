@@ -46,16 +46,13 @@ def comment_post(request,id):
     return redirect('home')
 
 def edit_post(request,id):
-    post_id = id
-    current_post = Posts.objects.filter(id=post_id)
-    print(current_post)
-
-    initial_data = {
-        'title':'',
-        'post':'',
-        'author':'',
-        'my_image':''
+    current_post = Posts.objects.get(pk=id)
+    data = {
+        'title':current_post.title,
+        'post':current_post.post,
+        'author':current_post.author,
+        'my_image':current_post.my_image
     }
-    form = CreatePost()
-
-    return redirect('/add/',{'edition':current_post})
+    my_form = CreatePost(data,initial=data)
+    
+    return redirect('/add/',{'form':my_form})
