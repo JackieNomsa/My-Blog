@@ -18,8 +18,8 @@ def interests(request):
     my_interests = Posts.objects.filter(title__contains='coding')
     return render(request, 'posts/interests.html',{'data_':my_interests})
 
-def current(request):
-    return render('currentpost.html')
+def current(request,id):
+    return render(request,'posts/currentpost.html')
 
 def add_post(request):
     if request.method == 'POST':
