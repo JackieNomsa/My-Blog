@@ -18,6 +18,8 @@ def interests(request):
     my_interests = Posts.objects.filter(title__contains='coding')
     return render(request, 'posts/interests.html',{'data_':my_interests})
 
+def current(request):
+    return render('currentpost.html')
 
 def add_post(request):
     if request.method == 'POST':
@@ -50,7 +52,7 @@ def comment_post(request):
             user_comment = Comments(comment=comment,for_post=request.post,written_by=request.user)
 
             user_comment.save()
-            return redirect('/')
+            return render('currentpost.html')
     else:
         form = CreateComment()
         return render('comment.html')
