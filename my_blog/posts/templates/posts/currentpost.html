@@ -4,20 +4,49 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>hi, current_post file</h1>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% if post %}
+    <h3>{{ post.title }}</h3>
+    <div class="blog-info">
+      <div>
+        <p class="blog-text">{{ post.post }}</p>
+      </div>
+
+      {% if post.my_image %}
+      <img
+        class="image"
+        src="{{ post.my_image.url }}"
+        alt="image-{{ post.title }}"
+        width="400"
+        max-height="500"
+      />
+      {% endif %}
+      <p class="small-txt">
+        <a href="/about" class="writer">Written-by: {{ i.author }}</a>
+      </p>
+      <p class="small-txt date">Date-posted: {{ post.date_posted }}</p>
+      {% if post.date_posted != post.date_updated %}
+      <p class="small-txt date">Last-update: {{ post.date_updated }}</p>
+      {% endif %}
+    </div>
+    {% else %}
+    <h1>hi, current_post file</h1>
+    {% endif %}
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <script src="" async defer></script>
+  </body>
 </html>

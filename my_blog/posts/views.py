@@ -19,7 +19,8 @@ def interests(request):
     return render(request, 'posts/interests.html',{'data_':my_interests})
 
 def current(request,id):
-    return render(request,'posts/currentpost.html')
+    post = Posts.objects.filter(id=id)
+    return render(request,'posts/currentpost.html',{'post':post})
 
 def add_post(request):
     if request.method == 'POST':
