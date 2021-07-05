@@ -43,6 +43,7 @@ def delete_post(request,id):
     return redirect('home')
 
 def comment_post(request,id):
+    
     return redirect('home')
 
 def edit_post(request,id):

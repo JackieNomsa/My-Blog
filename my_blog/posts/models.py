@@ -1,5 +1,8 @@
 from django.db import models
 import datetime
+from django.db.models.deletion import CASCADE
+
+from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
 class Posts(models.Model):
@@ -12,3 +15,8 @@ class Posts(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=200)
+    for_post = ForeignKey(Posts,on_delete=models.CASCADE)
+    written_by = models.CharField(max_length=30)

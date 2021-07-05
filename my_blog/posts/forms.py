@@ -5,3 +5,7 @@ class CreatePost(forms.Form):
     post = forms.CharField(widget=forms.Textarea)
     author = forms.CharField(max_length=30)
     my_image = forms.ImageField(required=False)
+
+class CreateComment(forms.Form):
+    comment = forms.CharField(max_length=200)
+    
