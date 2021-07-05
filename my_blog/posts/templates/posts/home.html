@@ -39,7 +39,7 @@
                         {% endif %}
                         <div class='my-links' key={i.id}>
                         <a href={% url 'edit' i.id %} class="link-1"><abbr title="EDIT"><i class="fa fa-edit fa-2x"></i></abbr></a>
-                        <a href={% url 'comment'  i.id %} class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
+                        <a href={% url 'current' i.id %} class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
                         <a href={% url 'delete' i.id %} class=" link-2"><abbr title="DELETE"><i class="fa fa-trash-o fa-2x"></i></abbr></a>
                         </div>
             </div>   
