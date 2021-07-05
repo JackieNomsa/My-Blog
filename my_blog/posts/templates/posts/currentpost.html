@@ -13,33 +13,8 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    {% if post %}
     <h3>{{ post.title }}</h3>
-    <div class="blog-info">
-      <div>
-        <p class="blog-text">{{ post.post }}</p>
-      </div>
 
-      {% if post.my_image %}
-      <img
-        class="image"
-        src="{{ post.my_image.url }}"
-        alt="image-{{ post.title }}"
-        width="400"
-        max-height="500"
-      />
-      {% endif %}
-      <p class="small-txt">
-        <a href="/about" class="writer">Written-by: {{ i.author }}</a>
-      </p>
-      <p class="small-txt date">Date-posted: {{ post.date_posted }}</p>
-      {% if post.date_posted != post.date_updated %}
-      <p class="small-txt date">Last-update: {{ post.date_updated }}</p>
-      {% endif %}
-    </div>
-    {% else %}
-    <h1>hi, current_post file</h1>
-    {% endif %}
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
