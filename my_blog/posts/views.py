@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Posts
-from .forms import CreatePost
+from .models import Posts, Comments
+from .forms import CreatePost, CreateComment
 
 
 # Create your views here.
@@ -36,15 +36,24 @@ def add_post(request):
         form = CreatePost()
     return render(request,'posts/add.html',{'form':form})
 
-def delete_post(request,id):
+def delete_post(id):
     post_id = id
-
     Posts.objects.filter(id=post_id).delete()
     return redirect('home')
 
-def comment_post(request,id):
-    
-    return redirect('home')
+def comment_post(request):
+    if request.mothod == 'POST':
+        form = CreateComment(request.POST)
+        if form.is_valid():
+            comment = form.cleaned_data['comment']
+
+            user_comment = Comments(comment=comment,for_post=request.post,written_by=request.user)
+
+            user_comment.save()
+            return redirect('/')
+    else:
+        form = CreateComment()
+        return render('comment.html')
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
