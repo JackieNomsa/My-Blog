@@ -39,10 +39,10 @@ def add_post(request):
         form = CreatePost()
     return render(request,'posts/add.html',{'form':form})
 
-def delete_post(id):
+def delete_post(request,id):
     post_id = id
     Posts.objects.filter(id=post_id).delete()
-    return redirect('home')
+    return redirect('/')
 
 def comment_post(request):
     if request.mothod == 'POST':
