@@ -1,27 +1,55 @@
+{% load static %}
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h3>{{ post.title }}</h3>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current post {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<body>
+    <ul class="my-nav">
+        <li><a href="/"><abbr title="HOME"><i class="fa fa-home fa-2x"></i></abbr></a></li>
+        <li><a href="/about"><abbr title="ABOUT  ME"><i class="fa fa-user fa-2x"></i></abbr></a></li>
+        <li><a href="/interests"><abbr title="INTERESTS"><i class="fa fa-globe fa-2x"></i></abbr></a></li>
+        <li><a href="/add"><abbr title="ADD POST"><i class="fa fa-plus fa-2x"></i></abbr></a></li>
+    </ul>
+        
+    {% block body %}
+        <div class="current_post">
+            <h1>Post</h1> 
+        </div>
+        <div class="">
+            {% for i in data_%}
+                <h3>{{ i.title }}</h3>
+                <div class="blog-info">
+                    <div>
+                        <p class='blog-text'>{{ i.post }}</p>
+                        
+                    </div>
+                    
+                    {% if i.my_image %}
+                    <img class='image' src="{{ i.my_image.url }}" alt="image-{{ i.title }}" width="400" max-height='500'>
+                    {% endif %}
+                    <p class="small-txt"><a href="/about" class="writer">Written-by: {{ i.author }}</a></p>
+                        <p class="small-txt date">Date-posted: {{ i.date_posted }}</p>
+                        {% if i.date_posted != i.date_updated %}
+                            <p class="small-txt date">Last-update: {{ i.date_updated }}</p>
+                        {% endif %}
+                        <div class='my-links' key={i.id}>
+                        <a href={% url 'edit' i.id %} class="link-1"><abbr title="EDIT"><i class="fa fa-edit fa-2x"></i></abbr></a>
+                        <a href={% url 'current' i.id %} class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
+                        <a href={% url 'delete' i.id %} class=" link-2"><abbr title="DELETE"><i class="fa fa-trash-o fa-2x"></i></abbr></a>
+                        </div>
+            </div>   
+            {% endfor %}
+        </div>
+    {% endblock %}
 
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
-
-    <script src="" async defer></script>
-  </body>
+    <div class='footer'>
+    <p>&copy Jackie-Nomsa All Rights Reserved</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
 </html>
