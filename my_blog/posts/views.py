@@ -47,11 +47,11 @@ def delete_post(request,id):
 def comment_post(request,id):
     post = Posts.objects.filter(id=id)
     comments = Comments.objects.filter(for_post=id)
-
-    context = {
-        'post':post,
-        'comment':comments,
-    }
+    # context = {
+    #     'post':post,
+    #     'comment':comments,
+    # }
+    
     if request.method == 'POST':
         form = CreateComment(request.POST)
         if form.is_valid():
@@ -60,10 +60,11 @@ def comment_post(request,id):
             user_comment = Comments(comment=comment,for_post=request.post,written_by='annonymous')
 
             user_comment.save()
-            return render(request,'posts/currentpost.html',context)
+            return render(request,'posts/currentpost.html',{'post':post,
+        'comments':comments})
     else:
         form = CreateComment()
-        return render(request,'posts/comment.html',{'form':form})
+        return render(request,'posts/comment.html',{'post':post,'form':form})
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
