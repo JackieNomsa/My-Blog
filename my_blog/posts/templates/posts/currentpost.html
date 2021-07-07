@@ -8,7 +8,8 @@
 <div>
   <ul>
     {% for i in comments %}
-    <li>{{i.comment}}</li>
+    <li>{{i.comment}}
+    <a href={% url 'delete_comment' i.id %} class=" link-2"><abbr title="delete comment"><i class="fa fa-trash-o fa-2x"></i></abbr></a></li>
     {% endfor %}
   </ul>
 </div>

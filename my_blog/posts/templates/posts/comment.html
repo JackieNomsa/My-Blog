@@ -20,7 +20,11 @@
     <p class="small-txt date">Date-posted: {{ post.date_posted }}</p>
   </div>
   <div class="">
-    <form action="/comment/5" method="POST" enctype="multipart/form-data">
+    <form
+      action="{% url 'comment' id=post.id %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %} {{form.as_ul}}
       <button type="submit" name="save" class="my-btn">Comment</button>
     </form>

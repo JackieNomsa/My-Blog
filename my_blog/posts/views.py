@@ -82,4 +82,4 @@ def edit_post(request,id):
 def delete_comment(request,id):
     comment_id = id
     Posts.objects.filter(id=comment_id).delete()
-    return render(request,'currentpost.html')
+    return redirect('comment_post')
