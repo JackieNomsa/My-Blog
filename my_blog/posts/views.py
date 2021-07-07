@@ -45,7 +45,8 @@ def delete_post(request,id):
     return redirect('/')
 
 def comment_post(request,id):
-    post = Posts.objects.filter(id=id)
+    post = Posts.objects.get(id=id)
+    
     comments = Comments.objects.filter(for_post=id)
     # context = {
     #     'post':post,
@@ -57,7 +58,7 @@ def comment_post(request,id):
         if form.is_valid():
             comment = form.cleaned_data['comment']
 
-            user_comment = Comments(comment=comment,for_post=request.post,written_by='annonymous')
+            user_comment = Comments(comment=comment,for_post=post.title,written_by='annonymous')
 
             user_comment.save()
             return render(request,'posts/currentpost.html',{'post':post,
