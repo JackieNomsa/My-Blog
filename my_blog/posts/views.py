@@ -60,10 +60,10 @@ def comment_post(request,id):
             user_comment = Comments(comment=comment,for_post=request.post,written_by='annonymous')
 
             user_comment.save()
-            return render(request,'currentpost.html',context)
+            return render(request,'posts/currentpost.html',context)
     else:
         form = CreateComment()
-        return render(request,'posts/comment.html')
+        return render(request,'posts/comment.html',{'form':form})
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
