@@ -8,6 +8,8 @@ from .forms import CreatePost, CreateComment
 
 def home(request):
     my_posts = Posts.objects.all().order_by('title')
+    my_comments = Comments.objects.all()
+    print(my_comments)
     return render(request, 'posts/home.html', {'data_': my_posts})
 
 

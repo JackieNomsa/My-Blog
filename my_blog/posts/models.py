@@ -20,3 +20,7 @@ class Comments(models.Model):
     comment = models.CharField(max_length=200)
     for_post = ForeignKey(Posts,on_delete=models.CASCADE)
     written_by = models.CharField(max_length=30)
+    date_posted = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+    def __str__(self):
+        return self.comment
