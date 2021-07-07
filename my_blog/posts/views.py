@@ -50,15 +50,7 @@ def comment_post(request,id):
     post = Posts.objects.get(id=id)
     
     current_comments = Comments.objects.filter(for_post_id=post.id)
-    # current_comments = []
-    # for comment in all_comments:
-    #     if comment.post == post:
-    #         current_comments.append(comment)
-            
-    # context = {
-    #     'post':post,
-    #     'comment':comments,
-    # }
+    
     
     if request.method == 'POST':
         form = CreateComment(request.POST)
@@ -86,3 +78,8 @@ def edit_post(request,id):
     my_form = CreatePost(data,initial=data)
     
     return redirect('/add/',{'form':my_form})
+
+def delete_comment(request,id):
+    comment_id = id
+    Posts.objects.filter(id=comment_id).delete()
+    return render(request,'currentpost.html')
