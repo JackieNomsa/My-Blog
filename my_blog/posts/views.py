@@ -9,7 +9,7 @@ from .forms import CreatePost, CreateComment
 def home(request):
     my_posts = Posts.objects.all().order_by('title')
     my_comments = Comments.objects.all()
-    print(my_comments)
+    
     return render(request, 'posts/home.html', {'data_': my_posts})
 
 
@@ -49,7 +49,12 @@ def delete_post(request,id):
 def comment_post(request,id):
     post = Posts.objects.get(id=id)
     
-    comments = Comments.objects.filter(for_post=id)
+    current_comments = Comments.objects.filter(for_post_id=post.id)
+    # current_comments = []
+    # for comment in all_comments:
+    #     if comment.post == post:
+    #         current_comments.append(comment)
+            
     # context = {
     #     'post':post,
     #     'comment':comments,
@@ -57,6 +62,7 @@ def comment_post(request,id):
     
     if request.method == 'POST':
         form = CreateComment(request.POST)
+        
         if form.is_valid():
             comment = form.cleaned_data['comment']
 
@@ -64,7 +70,7 @@ def comment_post(request,id):
 
             user_comment.save()
             return render(request,'posts/currentpost.html',{'post':post,
-        'comments':comments})
+        'comments':current_comments})
     else:
         form = CreateComment()
         return render(request,'posts/comment.html',{'post':post,'form':form})
