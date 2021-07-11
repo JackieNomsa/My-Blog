@@ -54,7 +54,7 @@ def add_post(request):
             return redirect('/')
     else:
         form = CreatePost()
-    return render(request,'posts/add.html',{'form':form})
+    return render(request,'posts/add.html',{'form':form,'title':'Create Post','button':'Add Post'})
 
 def delete_post(request,id):
     post_id = id
@@ -92,7 +92,7 @@ def edit_post(request,id):
             form.save()
         return redirect('/')
     
-    return render(request,'posts/add.html',{'form':form})
+    return render(request,'posts/add.html',{'form':form,'title':'Edit Post','button':'Update'})
 
 def delete_comment(request,id):
     comment_id = id
