@@ -21,6 +21,8 @@ from .forms import CreatePost, CreateComment
 
 # print(my_post_comments)
 
+
+
 def home(request):
     my_posts = Posts.objects.all().order_by('title')
     
@@ -84,20 +86,22 @@ def comment_post(request,id):
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
+
     form = CreatePost(instance=current_post)
     if request.method == 'POST':
         form = CreatePost(request.POST,instance=current_post)
 
         if form.is_valid():
-            form.save()
+            print(form)
+            current_post.title = form.title
+            current_post.post = form.post
+            current_post.author = form.author
+            current_post.save()
         return redirect('/')
     
     return render(request,'posts/add.html',{'form':form,'title':'Edit Post','button':'Update'})
 
 def delete_comment(request,id):
-    comment_id = id
-    current_comment = Comments.objects.filter(id=comment_id)
-    current_post = Posts.objects.get(id=current_comment.for_post)
-    Comments.objects.filter(id=comment_id).delete()
+    Comments.objects.get(id=id).delete()
     
     return render(request,'posts/currentpost.html',{'post':Posts.objects.get()})
