@@ -42,9 +42,10 @@
                         <a href={% url 'comment' i.id %} class=" link-1"><abbr title="COMMENT"><i class="fa fa-comment fa-2x"></i></abbr></a>
                         <a href={% url 'delete' i.id %} class=" link-2"><abbr title="DELETE"><i class="fa fa-trash-o fa-2x"></i></abbr></a>
                         </div>
-            </div>   
+            </div> 
+            <hr>  
             {% endfor %}
-            <hr>
+            
         </div>
         
     {% endblock %}

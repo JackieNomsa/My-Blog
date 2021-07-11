@@ -77,9 +77,12 @@ def edit_post(request,id):
     }
     my_form = CreatePost(data,initial=data)
     
-    return redirect('/add/',{'form':my_form})
+    return render(request,'posts/add.html',{'form':my_form})
 
 def delete_comment(request,id):
     comment_id = id
-    Posts.objects.filter(id=comment_id).delete()
-    return redirect('comment_post')
+    current_comment = Comments.objects.filter(id=comment_id)
+    current_post = Posts.objects.get(id=current_comment.for_post)
+    Comments.objects.filter(id=comment_id).delete()
+    
+    return render(request,'posts/currentpost.html',{'post':Posts.objects.get()})
