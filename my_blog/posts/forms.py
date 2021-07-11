@@ -6,6 +6,9 @@ class CreatePost(forms.ModelForm):
         model = Posts
         fields = ['title','post','author','my_image']
 
-class CreateComment(forms.Form):
-    comment = forms.CharField(max_length=200)
+class CreateComment(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['comment','written_by']
+        
     

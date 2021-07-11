@@ -84,12 +84,15 @@ def comment_post(request,id):
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
-    
-    my_form = CreatePost(instance=current_post)
+    form = CreatePost(instance=current_post)
+    if request.method == 'POST':
+        form = CreatePost(request.POST,instance=current_post)
 
+        if form.is_valid():
+            form.save()
+        return redirect('/')
     
-    
-    return render(request,'posts/add.html',{'form':my_form})
+    return render(request,'posts/add.html',{'form':form})
 
 def delete_comment(request,id):
     comment_id = id
