@@ -6,9 +6,24 @@ from .forms import CreatePost, CreateComment
 
 # Create your views here.
 
+# my_comments = Comments.objects.all()
+# my_post_comments = []
+
+# for p in Posts.objects.all():
+    
+#     for c in my_comments:
+#         if p.id == c.for_post_id:
+#             my_post_comments.append({p.title:c.for_post_id})
+
+# my_counter = 0
+# while my_counter < len(my_post_comments):
+#     if
+
+# print(my_post_comments)
+
 def home(request):
     my_posts = Posts.objects.all().order_by('title')
-    my_comments = Comments.objects.all()
+    
     
     return render(request, 'posts/home.html', {'data_': my_posts})
 
@@ -69,14 +84,9 @@ def comment_post(request,id):
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
-    data = {
-        'title':current_post.title,
-        'post':current_post.post,
-        'author':current_post.author,
-        'my_image':current_post.my_image
-    }
-    Posts.objects.filter(pk=id).delete()
-    my_form = CreatePost(data,initial=data)
+    
+    my_form = CreatePost(instance=current_post)
+
     
     
     return render(request,'posts/add.html',{'form':my_form})

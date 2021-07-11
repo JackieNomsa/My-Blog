@@ -1,10 +1,10 @@
 from django import forms
+from .models import Posts, Comments
 
-class CreatePost(forms.Form):
-    title = forms.CharField(max_length=50)
-    post = forms.CharField(widget=forms.Textarea)
-    author = forms.CharField(max_length=30)
-    my_image = forms.ImageField(required=False)
+class CreatePost(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields = ['title','post','author','my_image']
 
 class CreateComment(forms.Form):
     comment = forms.CharField(max_length=200)
