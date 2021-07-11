@@ -75,7 +75,9 @@ def edit_post(request,id):
         'author':current_post.author,
         'my_image':current_post.my_image
     }
+    Posts.objects.filter(pk=id).delete()
     my_form = CreatePost(data,initial=data)
+    
     
     return render(request,'posts/add.html',{'form':my_form})
 
