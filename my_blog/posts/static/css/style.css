@@ -98,6 +98,17 @@ html {
   height: 18em;
 }
 
+/* comments */
+.curr-comms {
+  width: 70%;
+  margin: auto;
+}
+
+.curr-comm {
+  padding: 1em;
+  list-style-type: none;
+}
+
 /* interest */
 .interests {
   margin: 0;

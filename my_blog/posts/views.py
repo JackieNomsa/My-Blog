@@ -19,7 +19,7 @@ def interests(request):
     return render(request, 'posts/interests.html',{'data_':my_interests})
 
 def current(request,id):
-    post = Posts.objects.filter(id=id)
+    post = Posts.objects.get(id=id)
     comments = Comments.objects.filter(for_post_id=id)
     return render(request,'posts/comment.html',{'post':post,'comments':comments})
 
