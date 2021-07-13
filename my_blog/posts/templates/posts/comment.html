@@ -19,7 +19,9 @@
     </p>
     <p class="small-txt date">Date-posted: {{ post.date_posted }}</p>
   </div>
+  
   <div class="">
+  {% if form %}
     <form
       action="{% url 'comment' id=post.id %}"
       method="POST"
@@ -28,6 +30,14 @@
       {% csrf_token %} {{form.as_ul}}
       <button type="submit" name="save" class="my-btn">Comment</button>
     </form>
+  {% endif %}
+    {% if comments %}
+    <ul>
+      {% for i in comments %}
+      <li>{{i}}<a href={% url 'delete_comment' i.id %} class="del-comment"><abbr title="delete comment"><i class="fa fa-trash-o fa-2x"></i></abbr></a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

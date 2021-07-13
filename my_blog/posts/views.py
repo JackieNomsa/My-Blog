@@ -83,7 +83,7 @@ def comment_post(request,id):
         'comments':current_comments})
     else:
         form = CreateComment()
-        return render(request,'posts/comment.html',{'post':post,'form':form})
+        return render(request,'posts/comment.html',{'post':post,'form':form,'comments':current_comments})
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)
@@ -104,7 +104,7 @@ def edit_post(request,id):
 
 def delete_comment(request,id):
     comment = Comments.objects.get(id=id)
-    post = Posts.objects.get(id=comment.for_post_id)
+    # post = Posts.objects.get(id=comment.for_post_id)
     comment.delete()
     
-    return render(request,'posts/currentpost.html',{'post':post})
+    return redirect('current')
