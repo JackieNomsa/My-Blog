@@ -4,25 +4,6 @@ from .models import Posts, Comments
 from .forms import CreatePost, CreateComment
 
 
-# Create your views here.
-
-# my_comments = Comments.objects.all()
-# my_post_comments = []
-
-# for p in Posts.objects.all():
-    
-#     for c in my_comments:
-#         if p.id == c.for_post_id:
-#             my_post_comments.append({p.title:c.for_post_id})
-
-# my_counter = 0
-# while my_counter < len(my_post_comments):
-#     if
-
-# print(my_post_comments)
-
-
-
 def home(request):
     my_posts = Posts.objects.all().order_by('title')
     
@@ -40,7 +21,7 @@ def interests(request):
 def current(request,id):
     post = Posts.objects.filter(id=id)
     comments = Comments.objects.filter(for_post_id=id)
-    return render(request,'posts/currentpost.html',{'post':post,'comments':comments})
+    return render(request,'posts/comment.html',{'post':post,'comments':comments})
 
 def add_post(request):
     if request.method == 'POST':
@@ -79,7 +60,7 @@ def comment_post(request,id):
             user_comment = Comments(comment=comment,for_post=post,written_by='annonymous')
 
             user_comment.save()
-            return render(request,'posts/currentpost.html',{'post':post,
+            return render(request,'posts/comment.html',{'post':post,
         'comments':current_comments})
     else:
         form = CreateComment()
