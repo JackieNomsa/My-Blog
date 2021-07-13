@@ -21,11 +21,13 @@
             <h1>Tech with Jackie</h1> 
         </div>
         <div class="my-container home">
+        {% if data_ %}
             {% for i in data_%}
                 <h3>{{ i.title }}</h3>
                 <div class="blog-info">
                     <div>
                         <p class='blog-text'>{{ i.post }}</p>
+                        <a href={% url 'current' i.id %} class='italic'>more...</a>
                         
                     </div>
                     
@@ -46,7 +48,9 @@
             </div> 
             <hr>  
             {% endfor %}
-            
+        {% else %}
+        <h1>Sorry! This site has no blogs yet</h1>
+        {% endif %}
         </div>
         
     {% endblock %}

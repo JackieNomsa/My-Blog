@@ -54,6 +54,11 @@ html {
 }
 
 /* home page */
+
+.italic {
+  font-style: italic;
+}
+
 .blog-info {
   display: grid;
   grid-template-columns: auto;

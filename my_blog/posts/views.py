@@ -39,7 +39,8 @@ def interests(request):
 
 def current(request,id):
     post = Posts.objects.filter(id=id)
-    return render(request,'posts/currentpost.html',{'post':post})
+    comments = Comments.objects.filter(for_post_id=id)
+    return render(request,'posts/currentpost.html',{'post':post,'comments':comments})
 
 def add_post(request):
     if request.method == 'POST':
@@ -102,6 +103,8 @@ def edit_post(request,id):
     return render(request,'posts/add.html',{'form':form,'title':'Edit Post','button':'Update'})
 
 def delete_comment(request,id):
-    Comments.objects.get(id=id).delete()
+    comment = Comments.objects.get(id=id)
+    post = Posts.objects.get(id=comment.for_post_id)
+    comment.delete()
     
-    return render(request,'posts/currentpost.html',{'post':Posts.objects.get()})
+    return render(request,'posts/currentpost.html',{'post':post})
