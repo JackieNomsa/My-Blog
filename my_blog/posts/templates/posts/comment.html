@@ -32,9 +32,10 @@
     </form>
   {% endif %}
     {% if comments %}
+    <h5 class='comm_tag'>------Comments------</h5>
     <ul class='curr-comms'>
       {% for i in comments %}
-      <li class='curr-comm'>{{i}}<a href={% url 'delete_comment' i.id %} class="del-comment"><abbr title="delete comment"><i class="fa fa-trash-o fa-2x"></i></abbr></a></li>
+      <li class='curr-comm'>{{i.comment}} <span class='comm_writer'>{{i.written_by}}</span><a href={% url 'delete_comment' i.id %} class="del-comment"><abbr title="delete comment"><i class="fa fa-trash-o fa-2x"></i></abbr></a></li>
       {% endfor %}
     </ul>
     {% endif %}

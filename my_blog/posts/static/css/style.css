@@ -100,13 +100,29 @@ html {
 
 /* comments */
 .curr-comms {
-  width: 70%;
+  width: 80%;
   margin: auto;
 }
 
 .curr-comm {
   padding: 1em;
   list-style-type: none;
+}
+
+.comm_writer {
+  font-size: small;
+  font-style: italic;
+  color: rgb(100, 99, 99);
+}
+
+.comm_tag {
+  color: rgb(201, 38, 147);
+}
+
+.del-comment {
+  color: red;
+  margin-left: 2em;
+  font-size: small;
 }
 
 /* interest */
