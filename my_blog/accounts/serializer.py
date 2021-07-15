@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth import User
+
 from rest_framework import serializers
-from .models import Login 
+from .models import Login, User
 
 class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(widget=serializers.PasswordInput)
