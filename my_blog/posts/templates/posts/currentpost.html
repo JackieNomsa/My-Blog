@@ -8,7 +8,7 @@
 
   <div>
 {% if comments %}
-<h4>------Comments------</h4>
+<h4 class='comm_tag'>------Comments------</h4>
   <ul class='curr-comms'>
     {% for i in comments %}
     <li class='curr-comm'>{{i.comment}} <span class='comm_writer'>{{i.written_by}}</span>
@@ -16,7 +16,7 @@
     {% endfor %}
   </ul>
   {% else %}
-  <h5>No comments yet</h5>
+  <h5 class='comm_tag'>No comments yet</h5>
   {% endif %}
 </div>
 {% else %}
