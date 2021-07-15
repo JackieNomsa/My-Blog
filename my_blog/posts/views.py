@@ -56,8 +56,9 @@ def comment_post(request,id):
         
         if form.is_valid():
             comment = form.cleaned_data['comment']
+            writer = form.cleaned_data['written_by']
 
-            user_comment = Comments(comment=comment,for_post=post,written_by='annonymous')
+            user_comment = Comments(comment=comment,for_post=post,written_by=writer)
 
             user_comment.save()
             return render(request,'posts/comment.html',{'post':post,
