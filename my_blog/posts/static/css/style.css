@@ -106,12 +106,13 @@ html {
 
 .curr-comm {
   padding: 1em;
-  list-style-type: none;
+  list-style-type: georgian;
 }
 
 .comm_writer {
   font-size: small;
   font-style: italic;
+  margin-left: 2em;
   color: rgb(100, 99, 99);
 }
 
