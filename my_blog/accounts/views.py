@@ -4,7 +4,6 @@ from .serializers import LoginSerializer, UserRegSerializer
 
 
 # Create your views here.
-class Login():
-    def get(request):
-        form = LoginSerializer()
-        return render(request,'accounts/login.html',{'form':form})
+def register(request):
+    form = UserRegSerializer()
+    return render(request,'accounts/register.html',{'form':form})
