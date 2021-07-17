@@ -8,6 +8,8 @@ def home(request):
     return render(request,'accounts/home.html')
 
 def register(request):
+    if request.method == 'POST':
+        pass
     form = UserRegForm()
     return render(request,'accounts/register.html',{'form':form})
 

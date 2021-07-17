@@ -321,3 +321,9 @@ button:hover {
 .register-tag {
   text-align: center;
 }
+
+/* register page */
+
+.my-container.register {
+  width: 70%;
+}

@@ -4,7 +4,7 @@
   <h3 class="login-tag">Login</h3>
 </div>
 <div class="my-container login">
-  <form action="/add/" method="POST" enctype="multipart/form-data">
+  <form action="login/" method="POST" enctype="multipart/form-data">
     {% csrf_token %} {{form.as_ul}}
     <button type="submit" name="save" class="my-btn">Login</button>
   </form>
