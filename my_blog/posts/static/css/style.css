@@ -310,3 +310,14 @@ button:hover {
 .sign-in:hover {
   background-color: #fff;
 }
+
+/* login page */
+
+.my-container.login {
+  width: 70%;
+}
+
+.login-tag,
+.register-tag {
+  text-align: center;
+}
