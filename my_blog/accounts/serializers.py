@@ -4,7 +4,7 @@ from rest_framework import serializers
 from .models import Login, User
 
 class LoginSerializer(serializers.Serializer):
-    password = serializers.CharField(widget=serializers.PasswordInput)
+    
     class Meta:
         model = Login
         fields = ['username','password']

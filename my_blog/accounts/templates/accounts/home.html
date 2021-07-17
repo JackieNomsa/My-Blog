@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-Blog {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<body>
+    <ul class="my-nav">
+        <li><a href="/"><abbr title="HOME"><i class="fa fa-home fa-2x"></i></abbr></a></li>
+        <li><a href="/about"><abbr title="ABOUT  ME"><i class="fa fa-user fa-2x"></i></abbr></a></li>
+        <li><a href="/interests"><abbr title="INTERESTS"><i class="fa fa-globe fa-2x"></i></abbr></a></li>
+        <li><a href="/add"><abbr title="ADD POST"><i class="fa fa-plus fa-2x"></i></abbr></a></li>
+    </ul>
+        
+    {% block body %}
+    <div class='my_user_links'>
+    <a href='sign_up' class='sign-up'>Sign up</a>
+    <a href='sign_in' class='sign-in'>Sign in</a>
+    </div>
+        <div class="welcome">
+            <h1>Tech with Jackie</h1> 
+        </div>
+        <div class="my-container home">
+
+    <div class='mdiv'></div>
+    <div class='footer'>
+    <p>&copy Jackie-Nomsa All Rights Reserved</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
