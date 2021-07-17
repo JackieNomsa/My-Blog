@@ -281,3 +281,32 @@ button:hover {
     padding: 2em;
   }
 }
+
+/*#################################################################*/
+
+/*Accounts*/
+
+.my_user_links {
+  position: absolute;
+  top: 0.6em;
+  right: 0.4em;
+}
+
+.my_user_links a {
+  padding: 1em 2em;
+  border-left: 1px solid rgb(41, 181, 236);
+  border-bottom: 1px solid rgb(41, 181, 236);
+}
+
+.sign-up {
+  background-color: rgb(41, 181, 236);
+  color: #fff;
+}
+
+.sign-up:hover {
+  background-color: rgba(41, 181, 236, 0.5);
+}
+
+.sign-in:hover {
+  background-color: #fff;
+}
