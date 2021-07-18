@@ -1,6 +1,7 @@
 from accounts.models import Login
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from .forms import LoginForm, UserRegForm
 
 
@@ -25,15 +26,26 @@ def register(request):
             
             header='User Created, You can login to your account'
                 
-            
-            print('registered')
+            form = LoginForm()
+        return render(request,'accounts/login.html',{'form':form,'context':header})
 
-        return redirect('login',{'context':header})
+        
     
     form = UserRegForm()
     return render(request,'accounts/register.html',{'form':form})
 
-def login(request,**kwargs):
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user_name = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=user_name,password=password)
+
+            if user is not None:
+                return redirect('/')
+            else:
+                return redirect('register')
     form = LoginForm()
     return render(request,'accounts/login.html',{'form':form})
 
