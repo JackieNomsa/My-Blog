@@ -1,5 +1,7 @@
-{% extends '../posts/home.html' %} {% load static %} {% block title %}Login {%
-endblock %} {% block body %}
+{% extends '../posts/home.html' %} {% load static %} {% block title %} Login --
+{% endblock %} {% block body %} {% if context %}
+<p>{{context.header}}</p>
+{% endif %}
 <div class="log">
   <h3 class="login-tag">Login</h3>
 </div>

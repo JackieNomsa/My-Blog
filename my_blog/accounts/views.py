@@ -10,6 +10,7 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
+        context = {}
         form = UserRegForm(request.POST)
         if form.is_valid():
             u_name = form.cleaned_data['username']
@@ -22,12 +23,12 @@ def register(request):
 
             user.save()
             context = {
-                'header':'User Created',
-                'button':'Login'
+                'header':'User Created, You can login to your account',
+                
             }
             print('registered')
 
-            return redirect(request,'login',context)
+        return redirect('login')
     
     form = UserRegForm()
     return render(request,'accounts/register.html',{'form':form})
@@ -35,4 +36,7 @@ def register(request):
 def login(request):
     form = LoginForm()
     return render(request,'accounts/login.html',{'form':form})
+
+users = User.objects.all()
+print(users)
 
