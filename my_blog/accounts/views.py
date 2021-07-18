@@ -22,18 +22,18 @@ def register(request):
             user = User.objects.create_user(username=u_name,first_name=f_name,last_name=l_name,email=email,password=pass_word)
 
             user.save()
-            context = {
-                'header':'User Created, You can login to your account',
+            
+            header='User Created, You can login to your account'
                 
-            }
+            
             print('registered')
 
-        return redirect('login')
+        return redirect('login',{'context':header})
     
     form = UserRegForm()
     return render(request,'accounts/register.html',{'form':form})
 
-def login(request):
+def login(request,**kwargs):
     form = LoginForm()
     return render(request,'accounts/login.html',{'form':form})
 
