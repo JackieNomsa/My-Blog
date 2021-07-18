@@ -1,5 +1,6 @@
 from accounts.models import Login
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
 from .forms import LoginForm, UserRegForm
 
 
@@ -9,7 +10,25 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
-        pass
+        form = UserRegForm(request.POST)
+        if form.is_valid():
+            u_name = form.cleaned_data['username']
+            f_name = form.cleaned_data['first_name']
+            l_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            pass_word = form.cleaned_data['password']
+            
+            user = User.objects.create_user(username=u_name,first_name=f_name,last_name=l_name,email=email,password=pass_word)
+
+            user.save()
+            context = {
+                'header':'User Created',
+                'button':'Login'
+            }
+            print('registered')
+
+            return redirect(request,'login',context)
+    
     form = UserRegForm()
     return render(request,'accounts/register.html',{'form':form})
 
