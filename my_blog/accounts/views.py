@@ -1,7 +1,7 @@
 from accounts.models import Login
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegForm
 
 
@@ -50,6 +50,6 @@ def loguserin(request):
     form = LoginForm()
     return render(request,'accounts/login.html',{'form':form})
 
-def logout(request):
-    request.user.logout()
+def logout_view(request):
+    logout(request)
 
