@@ -24,22 +24,25 @@ def current(request,id):
     return render(request,'posts/comment.html',{'post':post,'comments':comments})
 
 def add_post(request):
-    if request.method == 'POST':
-        form = CreatePost(request.POST, request.FILES)
+    if request.user.is_authenticated():
 
-        if form.is_valid():
-            t = form.cleaned_data['title']
-            p = form.cleaned_data['post']
-            a = form.cleaned_data['author']
-            m = form.cleaned_data['my_image']
+        if request.method == 'POST':
+            form = CreatePost(request.POST, request.FILES)
 
-            my_p = Posts(title=t,post=p,author=a, my_image=m)
-            my_p.save()
-            return redirect('/')
-    else:
-        form = CreatePost()
-    return render(request,'posts/add.html',{'form':form,'title':'Create Post','button':'Add Post'})
+            if form.is_valid():
+                t = form.cleaned_data['title']
+                p = form.cleaned_data['post']
+                a = form.cleaned_data['author']
+                m = form.cleaned_data['my_image']
 
+                my_p = Posts(title=t,post=p,author=a, my_image=m)
+                my_p.save()
+                return redirect('/')
+        else:
+            form = CreatePost()
+        return render(request,'posts/add.html',{'form':form,'title':'Create Post','button':'Add Post'})
+    return render(request,'accounts/login.html',{'context':'please sign up or login to add/comment blog'})
+    
 def delete_post(request,id):
     post_id = id
     Posts.objects.filter(id=post_id).delete()

@@ -13,13 +13,19 @@
         <li><a href="/"><abbr title="HOME"><i class="fa fa-home fa-2x"></i></abbr></a></li>
         <li><a href="/about"><abbr title="ABOUT  ME"><i class="fa fa-user fa-2x"></i></abbr></a></li>
         <li><a href="/interests"><abbr title="INTERESTS"><i class="fa fa-globe fa-2x"></i></abbr></a></li>
+        {% if user.is_authenticated %}
         <li><a href="/add"><abbr title="ADD POST"><i class="fa fa-plus fa-2x"></i></abbr></a></li>
+        {% endif %}
     </ul>
         
     {% block body %}
     <div class='my_user_links'>
+    {% if user.is_authenticated %}
+    <a href='accounts/login' class='sign-in'>Logout</a>
+    {% else %}
     <a href='accounts/register' class='sign-up'>Sign up</a>
     <a href='accounts/login' class='sign-in'>Sign in</a>
+    {% endif %}
     </div>
         <div class="welcome">
             <h1>Tech with Jackie</h1> 
