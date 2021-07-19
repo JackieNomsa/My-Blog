@@ -1,4 +1,4 @@
-from accounts.models import Login
+
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +11,6 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
-        context = {}
         form = UserRegForm(request.POST)
         if form.is_valid():
             u_name = form.cleaned_data['username']
@@ -52,5 +51,5 @@ def loguserin(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('home')
 

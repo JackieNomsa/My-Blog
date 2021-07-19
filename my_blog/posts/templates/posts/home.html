@@ -21,7 +21,7 @@
     {% block body %}
     <div class='my_user_links'>
     {% if user.is_authenticated %}
-    <a href='accounts/login' class='sign-in'>Logout</a>
+    <a href='accounts/logout_view' class='sign-in'>Logout</a>
     {% else %}
     <a href='accounts/register' class='sign-up'>Sign up</a>
     <a href='accounts/loguserin' class='sign-in'>Sign in</a>
