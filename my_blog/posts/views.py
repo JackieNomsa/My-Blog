@@ -45,30 +45,35 @@ def add_post(request):
     
 def delete_post(request,id):
     post_id = id
-    Posts.objects.filter(id=post_id).delete()
+    if request.user.is_authenticated:
+        Posts.objects.filter(id=post_id).delete()       
     return redirect('/')
 
 def comment_post(request,id):
-    post = Posts.objects.get(id=id)
-    
-    current_comments = Comments.objects.filter(for_post_id=post.id)
-    
-    
-    if request.method == 'POST':
-        form = CreateComment(request.POST)
+    if request.user.is_authenticated:
+
+        post = Posts.objects.get(id=id)
         
-        if form.is_valid():
-            comment = form.cleaned_data['comment']
-            writer = form.cleaned_data['written_by']
+        current_comments = Comments.objects.filter(for_post_id=post.id)
+        
+        
+        if request.method == 'POST':
+            form = CreateComment(request.POST)
+            
+            if form.is_valid():
+                comment = form.cleaned_data['comment']
+                writer = form.cleaned_data['written_by']
 
-            user_comment = Comments(comment=comment,for_post=post,written_by=writer)
+                user_comment = Comments(comment=comment,for_post=post,written_by=writer)
 
-            user_comment.save()
-            return render(request,'posts/comment.html',{'post':post,
-        'comments':current_comments})
+                user_comment.save()
+                return render(request,'posts/comment.html',{'post':post,
+            'comments':current_comments})
+        else:
+            form = CreateComment()
+            return render(request,'posts/comment.html',{'post':post,'form':form,'comments':current_comments})
     else:
-        form = CreateComment()
-        return render(request,'posts/comment.html',{'post':post,'form':form,'comments':current_comments})
+        return redirect('/accounts/')
 
 def edit_post(request,id):
     current_post = Posts.objects.get(pk=id)

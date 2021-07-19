@@ -327,3 +327,34 @@ button:hover {
 .my-container.register {
   width: 70%;
 }
+
+/* accounts home page */
+
+.my_home_userlinks {
+  padding: 2em;
+  text-align: center;
+}
+
+.my_home_userlinks a {
+  border: 1px solid rgb(110, 201, 204);
+  padding: 1em 2em;
+}
+
+.my_home_userlinks a.sign-in-home {
+  background-color: rgb(110, 201, 204);
+  color: #fff;
+}
+
+.my_home_userlinks a.sign-in-home:hover {
+  background-color: #fff;
+  color: rgb(110, 201, 204);
+}
+
+.my_home_userlinks a.sign-up-home:hover {
+  background-color: rgb(110, 201, 204);
+  color: #fff;
+}
+
+.acc-home {
+  font-family: "Syne Mono", monospace;
+}

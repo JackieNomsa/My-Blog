@@ -7,7 +7,7 @@ from .forms import LoginForm, UserRegForm
 
 # Create your views here.
 def home(request):
-    return render(request,'./posts/home.html')
+    return render(request,'accounts/home.html')
 
 def register(request):
     if request.method == 'POST':
