@@ -7,7 +7,7 @@ from .forms import LoginForm, UserRegForm
 
 # Create your views here.
 def home(request):
-    return render(request,'accounts/home.html')
+    return render(request,'./posts/home.html')
 
 def register(request):
     if request.method == 'POST':
@@ -51,5 +51,5 @@ def loguserin(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('/')
 
